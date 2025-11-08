@@ -1,0 +1,30 @@
+export const MISSION_MAP = {
+  INFERNO: 'Inferno',
+  DECAPITATION: 'Decapitation',
+  VOX_LIBERATIS: 'Vox Liberatis',
+  RELIQUARY: 'Reliquary',
+  FALL_OF_ATREUS: 'Fall of Atreus',
+  BALLISTIC_ENGINE: 'Ballistic Engine',
+  TERMINATION: 'Termination',
+  OBELISK: 'Obelisk',
+  EXFILTRATION: 'Exfiltration',
+  VORTEX: 'Vortex',
+};
+
+export const COLLECTABLE_MAP = {
+  DATASLATE: 'Dataslate',
+  GENESEED: 'Gene-Seed'
+} as const;
+
+export const MISSION_LIST = [
+  MISSION_MAP.INFERNO,
+  MISSION_MAP.DECAPITATION,
+  MISSION_MAP.VOX_LIBERATIS,
+  MISSION_MAP.RELIQUARY,
+  MISSION_MAP.FALL_OF_ATREUS,
+  MISSION_MAP.BALLISTIC_ENGINE,
+  MISSION_MAP.TERMINATION,
+  MISSION_MAP.OBELISK,
+  MISSION_MAP.EXFILTRATION,
+  MISSION_MAP.VORTEX,
+];

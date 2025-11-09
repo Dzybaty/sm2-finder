@@ -1,7 +1,8 @@
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useSwipeable, LEFT, RIGHT } from 'react-swipeable';
 
 import { ProgressBar } from './ProgressBar/ProgressBar';
+import AstraIcon from '@/assets/icons/astra.svg?react';
 
 import styles from './styles';
 
@@ -22,6 +23,7 @@ export const Slider = ({
   onNext,
   onPrev,
 }: SliderProps) => {
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
   const isPrevStepDisabled = useMemo(() => currentStep.id === 0, [currentStep]);
   const isNextStepDisabled = useMemo(
     () => currentStep.id === lastStepId,
@@ -53,6 +55,10 @@ export const Slider = ({
     onPrev,
   ]);
 
+  useEffect(() => {
+    setIsImageLoaded(false);
+  }, [currentStep.image]);
+
   const swipeHandlers = useSwipeable({
     onSwiped: ({ dir }) => {
       if (dir === LEFT && !isNextStepDisabled) {
@@ -73,7 +79,12 @@ export const Slider = ({
         onClick={onPrev}
         disabled={isPrevStepDisabled}
       />
-      <img src={currentStep.image} />
+      <img src={currentStep.image} onLoad={() => setIsImageLoaded(true)} />
+      {!isImageLoaded && (
+        <div css={styles.loader}>
+          <AstraIcon />
+        </div>
+      )}
       <button
         css={[styles.stepButton, styles.nextButton]}
         onClick={onNext}

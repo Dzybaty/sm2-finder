@@ -1,4 +1,14 @@
-import { css } from '@emotion/react';
+import { css, keyframes } from '@emotion/react';
+
+const flashAnimation = keyframes(`
+  0% {
+    filter: brightness(1) drop-shadow(0 0 0px black);
+  }
+  100% {
+    filter: brightness(1.6) drop-shadow(0 0 10px white);
+  }
+}
+`);
 
 export default {
   container: css({
@@ -10,20 +20,32 @@ export default {
     fontSize: '1rem',
     textShadow: '2px 2px black',
     color: '#CCB69C',
+    height: 'calc(100dvw / 1.77)',
+    width: '100dvw',
 
     '@media (min-width: 700px)': {
       fontSize: '2rem',
     },
 
-    img: {
-      display: 'flex',
-      height: 'auto',
-      maxWidth: '100dvw',
-      objectFit: 'cover',
+    '@media (min-width: 1920px)': {
+      width: 'calc(100dvh * 1.77)',
+      height: '100dvh',
+    },
 
-      '@media (min-width: 1920px)': {
-        width: 'auto',
-        height: '100dvh',
+    img: {
+      width: '100%',
+    },
+  }),
+
+  loader: css({
+    position: 'absolute',
+
+    svg: {
+      width: 70,
+      animation: `${flashAnimation} 1s infinite alternate`,
+
+      '@media (min-width: 700px)': {
+        width: 100,
       },
     },
   }),

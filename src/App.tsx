@@ -9,6 +9,7 @@ import type { OperationT } from '@/types';
 
 function App() {
   const [operation, setOperation] = useState<undefined | OperationT>(undefined);
+  const [isMediaSessionEnabled, setIsMediaSessionEnabled] = useState(false);
 
   const handleOperationSelect = (missionKey: string) => {
     const missionData = operations.find((op) => op.name === missionKey);
@@ -17,8 +18,19 @@ function App() {
 
   return (
     <>
-      <Menu onElementClick={handleOperationSelect}/>
-      <Viewer operation={operation} />
+      <Menu
+        isMediaSessionEnabled={isMediaSessionEnabled}
+        onMediaSessionChange={(isEnabled) =>
+          setIsMediaSessionEnabled(isEnabled)
+        }
+        onElementClick={handleOperationSelect}
+      />
+      {operation && (
+        <Viewer
+          operation={operation}
+          isMediaSessionEnabled={isMediaSessionEnabled}
+        />
+      )}
     </>
   );
 }

@@ -40,6 +40,13 @@ export default {
     },
   }),
 
+  mediaSessionControl: css({
+    display: 'flex',
+    alignItems: 'center',
+    margin: '8px 0',
+    fontSize: 14,
+  }),
+
   toogleButton: css({
     position: 'absolute',
     display: 'flex',

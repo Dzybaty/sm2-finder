@@ -8,6 +8,8 @@ App provides image hints for Space Marine 2 collectables. Optimized for desktop 
 2. Click rigth/left side of image to navigate through collectable locations
     1. on desktop you can use arrow keys for navigation in addition to button navigation
     2. on mobile you can use swipe gestures for navigation in addition to button navigation
+    3. **_Experimental_**: You can toggle _Enable media session_ checkbox in the menu and use keyboard _Previous_ and _Next_ media buttons. Ideal for multi-monitor setup as it is cancelling need to minimize the game.
+    Note, this feature is using MediaSession API, which can be unavailable in some browsers.
 
 ## Running locally
 1. Clone ropository with `git@github.com:Dzybaty/sm2-finder.git`

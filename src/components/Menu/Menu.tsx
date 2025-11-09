@@ -7,10 +7,16 @@ import { MISSION_LIST } from '@/constants';
 import styles from './styles';
 
 type MenuProps = {
+  isMediaSessionEnabled: boolean;
+  onMediaSessionChange: (enabled: boolean) => void;
   onElementClick: (name: string) => void;
 };
 
-export const Menu = ({ onElementClick }: MenuProps) => {
+export const Menu = ({
+  isMediaSessionEnabled,
+  onMediaSessionChange,
+  onElementClick,
+}: MenuProps) => {
   const [isOpen, setIsOpen] = useState(true);
 
   const handleMissionSelect = (mission: string) => {
@@ -22,17 +28,30 @@ export const Menu = ({ onElementClick }: MenuProps) => {
     setIsOpen((prev) => !prev);
   };
 
+  const handleMediaSessionControl = () => {
+    onMediaSessionChange(!isMediaSessionEnabled);
+  };
+
   return (
     <div css={[styles.container, !isOpen && styles.containerHidden]}>
       <div css={styles.menu}>
         {MISSION_LIST.map((mission) => (
           <div
+            key={mission}
             css={styles.menuItem}
             onClick={() => handleMissionSelect(mission)}
           >
             {mission}
           </div>
         ))}
+        <div css={styles.mediaSessionControl}>
+          <input
+            type="checkbox"
+            checked={isMediaSessionEnabled}
+            onChange={handleMediaSessionControl}
+          />
+          <label>Enable media session</label>
+        </div>
         <div css={styles.toogleButton} onClick={handleToggleButton}>
           <MenuIcon />
         </div>

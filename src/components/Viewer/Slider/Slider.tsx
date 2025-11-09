@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useState } from 'react';
-import { useSwipeable, LEFT, RIGHT } from 'react-swipeable';
+import { useEffect, useState } from 'react';
+import type { SwipeableHandlers } from 'react-swipeable';
 
 import { ProgressBar } from './ProgressBar/ProgressBar';
 import AstraIcon from '@/assets/icons/astra.svg?react';
@@ -11,65 +11,29 @@ import type { CollectableT } from '@/types';
 type SliderProps = {
   currentStep: CollectableT;
   operationName: string;
+  isPrevStepDisabled: boolean;
+  isNextStepDisabled: boolean;
   lastStepId: number;
+  swipeHandlers: SwipeableHandlers;
   onNext: () => void;
   onPrev: () => void;
 };
 
 export const Slider = ({
   currentStep,
+  isPrevStepDisabled,
+  isNextStepDisabled,
   lastStepId,
   operationName,
+  swipeHandlers,
   onNext,
   onPrev,
 }: SliderProps) => {
   const [isImageLoaded, setIsImageLoaded] = useState(false);
-  const isPrevStepDisabled = useMemo(() => currentStep.id === 0, [currentStep]);
-  const isNextStepDisabled = useMemo(
-    () => currentStep.id === lastStepId,
-    [currentStep, lastStepId],
-  );
-
-  useEffect(() => {
-    const handleKBNavigation = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowRight' && !isNextStepDisabled) {
-        onNext();
-      }
-
-      if (e.key === 'ArrowLeft' && !isPrevStepDisabled) {
-        onPrev();
-      }
-    };
-
-    document.addEventListener('keydown', handleKBNavigation);
-
-    return () => {
-      document.removeEventListener('keydown', handleKBNavigation);
-    };
-  }, [
-    currentStep,
-    isNextStepDisabled,
-    isPrevStepDisabled,
-    lastStepId,
-    onNext,
-    onPrev,
-  ]);
 
   useEffect(() => {
     setIsImageLoaded(false);
   }, [currentStep.image]);
-
-  const swipeHandlers = useSwipeable({
-    onSwiped: ({ dir }) => {
-      if (dir === LEFT && !isNextStepDisabled) {
-        onNext();
-      }
-
-      if (dir === RIGHT && !isPrevStepDisabled) {
-        onPrev();
-      }
-    },
-  });
 
   return (
     <div css={styles.container} {...swipeHandlers}>

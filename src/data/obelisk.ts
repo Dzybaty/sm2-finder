@@ -49,36 +49,43 @@ export const Obelisk: OperationT = {
       id: 5,
       type: COLLECTABLE_MAP.GENESEED,
       image: image5,
+      pathVariant: 'rigth path',
     },
     {
       id: 6,
       type: COLLECTABLE_MAP.DATASLATE,
       image: image13,
+      pathVariant: 'rigth path',
     },
     {
       id: 7,
       type: COLLECTABLE_MAP.DATASLATE,
       image: image6,
+      pathVariant: 'rigth path',
     },
     {
       id: 8,
       type: COLLECTABLE_MAP.DATASLATE,
       image: image7,
+      pathVariant: 'straight path',
     },
     {
       id: 9,
       type: COLLECTABLE_MAP.GENESEED,
       image: image8,
+      pathVariant: 'straight path',
     },
     {
       id: 10,
       type: COLLECTABLE_MAP.DATASLATE,
       image: image9,
+      pathVariant: 'straight path',
     },
     {
       id: 11,
       type: COLLECTABLE_MAP.GENESEED,
       image: image10,
+      pathVariant: 'straight path',
     },
     {
       id: 12,

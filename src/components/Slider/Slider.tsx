@@ -58,7 +58,7 @@ export const Slider = ({ operation, setMediaSessionHandlers }: SliderProps) => {
   });
 
   const { name } = operation;
-  const { type, image } = operation.collectables[currentStepId];
+  const { type, image, pathVariant } = operation.collectables[currentStepId];
 
   return (
     <div css={styles.wrapper}>
@@ -77,7 +77,9 @@ export const Slider = ({ operation, setMediaSessionHandlers }: SliderProps) => {
             disabled={isNextStepDisabled}
           />
           <div css={styles.header}>{name}</div>
-          <div css={styles.label}>{type}</div>
+          <div
+            css={styles.label}
+          >{`${type}${pathVariant ? ` (${pathVariant})` : ''}`}</div>
           <Loader isShown={isLoading} />
         </div>
       </div>

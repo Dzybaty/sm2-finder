@@ -10,12 +10,14 @@ type MenuProps = {
   isMediaSessionEnabled: boolean;
   onMediaSessionChange: (enabled: boolean) => void;
   onElementClick: (name: string) => void;
+  onInfoClick: () => void;
 };
 
 export const Menu = ({
   isMediaSessionEnabled,
   onMediaSessionChange,
   onElementClick,
+  onInfoClick,
 }: MenuProps) => {
   const [isOpen, setIsOpen] = useState(true);
 
@@ -51,6 +53,9 @@ export const Menu = ({
             onChange={handleMediaSessionControl}
           />
           <label>Enable media session</label>
+        </div>
+        <div css={styles.info} onClick={onInfoClick}>
+          Information
         </div>
         <div css={styles.toogleButton} onClick={handleToggleButton}>
           <MenuIcon />

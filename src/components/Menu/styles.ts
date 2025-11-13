@@ -47,6 +47,13 @@ export default {
     fontSize: 14,
   }),
 
+  info: css({
+    margin: '8px 0',
+    textAlign: 'center',
+    textDecoration: 'underline',
+    cursor: 'pointer',
+  }),
+
   toogleButton: css({
     position: 'absolute',
     display: 'flex',
